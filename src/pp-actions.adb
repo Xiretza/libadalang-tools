@@ -672,10 +672,10 @@ package body Pp.Actions is
            --  ??? Ada 2020 related expressions, needs to be implemented. See
            --  T519-017.
 
-           when Ada_Abstract_State_Decl => null,
-           when Ada_Abstract_State_Decl_Expr => null,
-           when Ada_Multi_Abstract_State_Decl => null,
-           when Ada_Paren_Abstract_State_Decl => null,
+           --  when Ada_Abstract_State_Decl => null,
+           --  when Ada_Abstract_State_Decl_Expr => null,
+           --  when Ada_Multi_Abstract_State_Decl => null,
+           --  when Ada_Paren_Abstract_State_Decl => null,
            --   ??? SPARK related expressions, needs to be implemented. See
            --   U305-048.
 
@@ -1075,7 +1075,7 @@ package body Pp.Actions is
            when Ada_Anonymous_Type_Decl =>
              L ("//!", Aspects),
            when Ada_Synth_Anonymous_Type_Decl => null,
-           when Ada_Anonymous_Expr_Decl => null,
+           --  when Ada_Anonymous_Expr_Decl => null,
                --  Anonymous expr decls cannot appear in source trees
 
            when Ada_Anonymous_Type_Access_Def => null,
@@ -1194,7 +1194,8 @@ package body Pp.Actions is
              L ("until"),
            when Ada_With_Private_Absent => null,
            when Ada_With_Private_Present =>
-             L ("with private")
+             L ("with private"),
+           when others => null
         ); -- end case
    end Template_For_Kind;
 

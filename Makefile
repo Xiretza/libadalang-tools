@@ -5,6 +5,7 @@ BUILD_MODE ?= dev
 LIBRARY_TYPE ?= static
 LALTOOLS_SET ?= all
 PROCESSORS ?= 0
+GPRBUILD_FLAGS ?=
 
 ALL_LIBRARY_TYPES = static static-pic relocatable
 
@@ -37,7 +38,7 @@ lib:
 	    gprbuild -v -k \
 	      -XLIBRARY_TYPE=$$kind \
 	      -XBUILD_MODE=$(BUILD_MODE) \
-	      -P $$proj -p -j$(PROCESSORS) ; \
+	      -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
 	  done ; \
 	done
 
@@ -51,7 +52,7 @@ bin:
 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
 	   -XBUILD_MODE=$(BUILD_MODE) \
 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
-	   -P $$proj -p -j$(PROCESSORS) ; \
+	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
         done
 
 .PHONY: testsuite_drivers
@@ -64,7 +65,7 @@ testsuite_drivers:
 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
 	   -XBUILD_MODE=$(BUILD_MODE) \
 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
-	   -P $$proj -p -j$(PROCESSORS) ; \
+	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
         done
 
 .PHONY: all
@@ -77,7 +78,7 @@ all:
 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
 	   -XBUILD_MODE=$(BUILD_MODE) \
 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
-	   -P $$proj -p -j$(PROCESSORS) ; \
+	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
         done
 
 
